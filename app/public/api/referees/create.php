@@ -32,7 +32,7 @@ $db = DbConnection::getConnection();
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
   'INSERT INTO referee (name, age, grade, rating)
-  VALUES (?, ?, ?)'
+  VALUES (?, ?, ?,?)'
 );
 
 $stmt->execute([
