@@ -64,6 +64,12 @@
                               <td>{{ ref.age }}</td>
                               <td>{{ ref.grade }}</td>
                               <td>{{ ref.rating }}</td>
+                              <td>
+                                <button type="button" class="btn btn-outline-secondary btn-sm"
+                                  v-on:click="selectOffer(offer)">Edit</button>
+                                <button type="button" class="btn btn-outline-secondary btn-sm"
+                                  v-on:click="postDeleteOffer(offer)">Delete</button>
+                              </td>
                           </tr>
                       </tbody>
                   </table>

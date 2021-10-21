@@ -64,6 +64,12 @@
                               <td>{{ assign.rstatus }}</td>
                               <td>{{ assign.gid }}</td>
                               <td>{{ assign.rid}}</td>
+                              <td>
+                                <button type="button" class="btn btn-outline-secondary btn-sm"
+                                  v-on:click="selectOffer(offer)">Edit</button>
+                                <button type="button" class="btn btn-outline-secondary btn-sm"
+                                  v-on:click="postDeleteOffer(offer)">Delete</button>
+                              </td>
                           </tr>
                       </tbody>
                   </table>

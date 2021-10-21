@@ -62,6 +62,12 @@
                               <td>{{ game.location }}</td>
                               <td>{{ game.gdate }}</td>
                               <td>{{ game.gtime }}</td>
+                              <td>
+                                <button type="button" class="btn btn-outline-secondary btn-sm"
+                                  v-on:click="selectOffer(offer)">Edit</button>
+                                <button type="button" class="btn btn-outline-secondary btn-sm"
+                                  v-on:click="postDeleteOffer(offer)">Delete</button>
+                              </td>
                           </tr>
                       </tbody>
                   </table>
