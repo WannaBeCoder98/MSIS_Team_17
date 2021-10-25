@@ -171,7 +171,14 @@ const refApp = {
           resetinfoFormReferees() { // think I understand this
             this.selectedRef = null;
             this.infoFormReferees = {};
-          }
+          },
+          postRef(evt) {
+            if (this.selectedRef === null) {
+                this.postNewRef(evt);
+            } else {
+                this.postEditReferee(evt);
+            }
+          },
         
     },
     created(){

@@ -73,8 +73,8 @@
                 </div>
         
               </div>
-              <h2>Add a Referee!</h2>
-              <form v-on:submit.prevent="postNewRef">
+              <h2>Add or Update a Referee!</h2>
+              <form v-on:submit.prevent="postRef">
                 <div class="mb-3">
                   <label for="name" class="form-label">Name</label>
                   <input type="text" v-model="infoFormReferees.name" class="form-control" id="name">
