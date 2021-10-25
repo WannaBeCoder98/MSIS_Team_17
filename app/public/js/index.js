@@ -5,6 +5,7 @@ const refApp = {
             infoForm: {},
             referees:[],
             infoFormReferees: {},
+            selectedRef: null,
             assignments:[],
             infoFormAssignments: {}
         }
@@ -121,11 +122,9 @@ const refApp = {
             this.infoFormAssignments = {};
         },
 
-        // Ref Update & Delete 
+        // Ref Update & Delete
         postEditReferee(evt) {
-            this.infoFormReferees.rid = this.selectedStudent.id;
-            // DONT KNOW WHAT TO DO HERE --> this.infoFormReferees = this.selectedOffer.id;       
-            
+                
             console.log("Updating!", this.infoFormReferees);
     
             fetch('api/referees/update.php', {
@@ -144,14 +143,14 @@ const refApp = {
                 this.infoFormReferees();
               });
           },
-          postDeleteReferee(o) {
-            if (!confirm("Are you sure you want to delete this referee from "+o.companyName+"?")) { // confused here as well
+          postDeleteReferee(r) {
+            if (!confirm("Are you sure you want to delete this referee from "+r.name+"?")) { // confused here as well
                 return;
             }
             
             fetch('api/referees/delete.php', {
                 method:'POST',
-                body: JSON.stringify(o),
+                body: JSON.stringify(r),
                 headers: {
                   "Content-Type": "application/json; charset=utf-8"
                 }
@@ -160,18 +159,18 @@ const refApp = {
               .then( json => {
                 console.log("Returned from post:", json);
                 // TODO: test a result was returned!
-                this.offers = json;
+                this.referees = json;
                 
                 this.resetinfoFormReferees();
               });
           },
-          selectOffer(o) { // confused here as well 
-            this.selectedOffer = o;
-            this.offerForm = Object.assign({}, this.selectedOffer);
+          selectRef(r) { // confused here as well 
+            this.selectedRef = r;
+            this.infoFormReferees = Object.assign({}, this.selectedRef);
           },
           resetinfoFormReferees() { // think I understand this
-            this.selectedOffer = null;
-            this.offerForm = {};
+            this.selectedRef = null;
+            this.infoFormReferees = {};
           }
         
     },

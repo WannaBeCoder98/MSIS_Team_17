@@ -63,9 +63,9 @@
                               <td>{{ ref.rating }}</td>
                               <td>
                                 <button type="button" class="btn btn-outline-secondary btn-sm"
-                                  v-on:click="selectOffer(offer)">Edit</button>
+                                  v-on:click="selectRef(ref)">Edit</button>
                                 <button type="button" class="btn btn-outline-secondary btn-sm"
-                                  v-on:click="postDeleteOffer(offer)">Delete</button>
+                                  v-on:click="postDeleteReferee(ref)">Delete</button>
                               </td>
                           </tr>
                       </tbody>
@@ -91,7 +91,12 @@
                   <label for="rating" class="form-label">Rating</label>
                   <input type="number" v-model="infoFormReferees.rating" class="form-control" id="rating">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+                <!-- Code from working class model -->
+              <button type="submit" class="btn btn-primary">{{ selectedRef === null ? "Add" : "Edit" }} Referee </button>
+              <button type="button" class="btn btn-outline-secondary" 
+                v-if="selectedRef"
+                v-on:click="resetinfoFormReferees">Cancel</button>
               </form>
             </div>
             <hr>
