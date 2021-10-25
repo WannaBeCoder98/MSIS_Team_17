@@ -119,7 +119,60 @@ const refApp = {
         resetinfoFormAssignment() {
 
             this.infoFormAssignments = {};
-        }
+        },
+
+        // Ref Update & Delete 
+        postEditReferee(evt) {
+            this.infoFormReferees.rid = this.selectedStudent.id;
+            // DONT KNOW WHAT TO DO HERE --> this.infoFormReferees = this.selectedOffer.id;       
+            
+            console.log("Updating!", this.infoFormReferees);
+    
+            fetch('api/referees/update.php', {
+                method:'POST',
+                body: JSON.stringify(this.infoFormReferees),
+                headers: {
+                  "Content-Type": "application/json; charset=utf-8"
+                }
+              })
+              .then( response => response.json() )
+              .then( json => {
+                console.log("Returned from post:", json);
+                // TODO: test a result was returned!
+                this.referees = json;
+                
+                this.infoFormReferees();
+              });
+          },
+          postDeleteReferee(o) {
+            if (!confirm("Are you sure you want to delete this referee from "+o.companyName+"?")) { // confused here as well
+                return;
+            }
+            
+            fetch('api/referees/delete.php', {
+                method:'POST',
+                body: JSON.stringify(o),
+                headers: {
+                  "Content-Type": "application/json; charset=utf-8"
+                }
+              })
+              .then( response => response.json() )
+              .then( json => {
+                console.log("Returned from post:", json);
+                // TODO: test a result was returned!
+                this.offers = json;
+                
+                this.resetinfoFormReferees();
+              });
+          },
+          selectOffer(o) { // confused here as well 
+            this.selectedOffer = o;
+            this.offerForm = Object.assign({}, this.selectedOffer);
+          },
+          resetinfoFormReferees() { // think I understand this
+            this.selectedOffer = null;
+            this.offerForm = {};
+          }
         
     },
     created(){
