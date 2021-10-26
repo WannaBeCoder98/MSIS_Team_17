@@ -63,9 +63,9 @@
                               <td>{{ assign.rid}}</td>
                               <td>
                                 <button type="button" class="btn btn-outline-secondary btn-sm"
-                                  v-on:click="selectOffer(offer)">Edit</button>
+                                  v-on:click="selectAssignment(assign)">Edit</button>
                                 <button type="button" class="btn btn-outline-secondary btn-sm"
-                                  v-on:click="postDeleteOffer(offer)">Delete</button>
+                                  v-on:click="postDeleteAssignment(assign)">Delete</button>
                               </td>
                           </tr>
                       </tbody>
@@ -74,7 +74,7 @@
         
               </div>
               <h2>Add an Assignment!</h2>
-              <form v-on:submit.prevent="postNewAssignment">
+              <form v-on:submit.prevent="postAssignment">
                 <div class="mb-3">
                   <label for="position" class="form-label">Position</label>
                   <input list="postionList" v-model="infoFormAssignments.position" class="form-control" id="position">
@@ -103,7 +103,10 @@
                   <label for="rid" class="form-label">RID</label>
                   <input type="text" v-model="infoFormAssignments.rid" class="form-control" id="rid">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">{{ selectedAssignment === null ? "Add" : "Edit" }} Assignment </button>
+                <button type="button" class="btn btn-outline-secondary" 
+                  v-if="selectedAssignment"
+                  v-on:click="resetinfoFormAssignments">Cancel</button>
               </form>
             </div>
             <hr>

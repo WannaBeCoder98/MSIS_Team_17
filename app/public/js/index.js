@@ -3,11 +3,13 @@ const refApp = {
         return {
             games:[],
             infoForm: {},
+            selectedGame: null,
             referees:[],
             infoFormReferees: {},
             selectedRef: null,
             assignments:[],
-            infoFormAssignments: {}
+            infoFormAssignments: {},
+            selectedAssignment: null
         }
     },
     computed: {},
@@ -179,6 +181,64 @@ const refApp = {
                 this.postEditReferee(evt);
             }
           },
+
+          // Assignment Update & Delete
+        postEditAssignment(evt) {
+                
+          console.log("Updating!", this.infoFormAssignments);
+  
+          fetch('api/assignments/update.php', {
+              method:'POST',
+              body: JSON.stringify(this.infoFormAssignments),
+              headers: {
+                "Content-Type": "application/json; charset=utf-8"
+              }
+            })
+            .then( response => response.json() )
+            .then( json => {
+              console.log("Returned from post:", json);
+              // TODO: test a result was returned!
+              this.assignments = json;
+              
+              this.resetinfoFormAssignments();
+            });
+        },
+        postDeleteAssignment(a) {
+          if (!confirm("Are you sure you want to delete this referee from "+a.position+"?")) { // confused here as well
+              return;
+          }
+          
+          fetch('api/assignments/delete.php', {
+              method:'POST',
+              body: JSON.stringify(a),
+              headers: {
+                "Content-Type": "application/json; charset=utf-8"
+              }
+            })
+            .then( response => response.json() )
+            .then( json => {
+              console.log("Returned from post:", json);
+              // TODO: test a result was returned!
+              this.assignments = json;
+              
+              this.resetinfoFormAssignments();
+            });
+        },
+        selectAssignment(a) { // confused here as well 
+          this.selectedAssignment = a;
+          this.infoFormAssignments = Object.assign({}, this.selectedAssignment);
+        },
+        resetinfoFormAssignments() { // think I understand this
+          this.selectedAssignment = null;
+          this.infoFormAssignments = {};
+        },
+        postAssignment(evt) {
+          if (this.selectedAssignment === null) {
+              this.postNewAssignment(evt);
+          } else {
+              this.postEditAssignment(evt);
+          }
+        },
         
     },
     created(){

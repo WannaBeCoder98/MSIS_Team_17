@@ -61,9 +61,9 @@
                               <td>{{ game.gtime }}</td>
                               <td>
                                 <button type="button" class="btn btn-outline-secondary btn-sm"
-                                  v-on:click="selectOffer(offer)">Edit</button>
+                                  v-on:click="selectGame(game)">Edit</button>
                                 <button type="button" class="btn btn-outline-secondary btn-sm"
-                                  v-on:click="postDeleteOffer(offer)">Delete</button>
+                                  v-on:click="postDeleteGame(game)">Delete</button>
                               </td>
                           </tr>
                       </tbody>
@@ -72,7 +72,7 @@
         
               </div>
               <h2>Add a Game!</h2>
-              <form v-on:submit.prevent="postNewGame">
+              <form v-on:submit.prevent="postGame">
                 <div class="mb-3">
                   <label for="location" class="form-label">Location</label>
                   <input type="text" v-model="infoForm.location" class="form-control" id="location">
@@ -85,7 +85,10 @@
                   <label for="gtime" class="form-label">Time</label>
                   <input type="time" v-model="infoForm.gtime" class="form-control" id="gtime">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">{{ selectedGame === null ? "Add" : "Edit" }} Game </button>
+              <button type="button" class="btn btn-outline-secondary" 
+                v-if="selectedGame"
+                v-on:click="resetinfoFormReferees">Cancel</button>
               </form>
             </div>
             <hr>
