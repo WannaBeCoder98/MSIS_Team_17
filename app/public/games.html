@@ -71,7 +71,7 @@
                 </div>
         
               </div>
-              <h2>Add a Game!</h2>
+              <h2>Add or Update a Game!</h2>
               <form v-on:submit.prevent="postGame">
                 <div class="mb-3">
                   <label for="location" class="form-label">Location</label>
@@ -88,7 +88,7 @@
                 <button type="submit" class="btn btn-primary">{{ selectedGame === null ? "Add" : "Edit" }} Game </button>
               <button type="button" class="btn btn-outline-secondary" 
                 v-if="selectedGame"
-                v-on:click="resetinfoFormReferees">Cancel</button>
+                v-on:click="resetinfoForm">Cancel</button>
               </form>
             </div>
             <hr>

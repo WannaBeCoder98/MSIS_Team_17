@@ -239,6 +239,63 @@ const refApp = {
               this.postEditAssignment(evt);
           }
         },
+        // Games Update & Delete
+        postEditGame(evt) {
+                
+          console.log("Updating!", this.infoForm);
+  
+          fetch('api/games/update.php', {
+              method:'POST',
+              body: JSON.stringify(this.infoForm),
+              headers: {
+                "Content-Type": "application/json; charset=utf-8"
+              }
+            })
+            .then( response => response.json() )
+            .then( json => {
+              console.log("Returned from post:", json);
+              // TODO: test a result was returned!
+              this.games = json;
+              
+              this.resetinfoForm();
+            });
+        },
+        postDeleteGame(g) {
+          if (!confirm("Are you sure you want to delete this referee from "+g.location+"?")) { // confused here as well
+              return;
+          }
+          
+          fetch('api/games/delete.php', {
+              method:'POST',
+              body: JSON.stringify(g),
+              headers: {
+                "Content-Type": "application/json; charset=utf-8"
+              }
+            })
+            .then( response => response.json() )
+            .then( json => {
+              console.log("Returned from post:", json);
+              // TODO: test a result was returned!
+              this.games = json;
+              
+              this.resetinfoForm();
+            });
+        },
+        selectGame(g) { // confused here as well 
+          this.selectedGame = g;
+          this.infoForm = Object.assign({}, this.selectedGame);
+        },
+        resetinfoForm() { // think I understand this
+          this.selectedGame = null;
+          this.infoForm = {};
+        },
+        postGame(evt) {
+          if (this.selectedGame === null) {
+              this.postNewGame(evt);
+          } else {
+              this.postEditGame(evt);
+          }
+        },
         
     },
     created(){
