@@ -96,12 +96,20 @@
                   </datalist>
                 </div>
                 <div class="mb-3">
-                  <label for="gid" class="form-label">GID</label>
-                  <input type="text" v-model="infoFormAssignments.gid" class="form-control" id="gid">
+                  <!-- <label for="gid" class="form-label">GID</label> -->
+                  
+                  <label for="rid" class="form-label">Referee<span class="reqd"></span></label>
+                    <select class="form-select" aria-label="Default select example" v-model="infoFormAssignments.rid"  id="rid" @change='fetchRefData'>
+                        <option v-for="ref in referees" :value= 'ref.rid' >{{ ref.name }}</option>
+                    </select>
+                  
+                  <!--<input type="text" v-model="infoFormAssignments.gid" class="form-control" id="gid">-->
                 </div>
                 <div class="mb-3">
-                  <label for="rid" class="form-label">RID</label>
-                  <input type="text" v-model="infoFormAssignments.rid" class="form-control" id="rid">
+                  <label for="gid" class="form-label">Game<span class="reqd"></span></label>
+                    <select class="form-select" aria-label="Default select example" v-model="infoFormAssignments.gid"  id="gid" @change='fetchRefData'>
+                        <option v-for="game in games" :value= 'game.gid' >{{ game.gid }}</option>
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
