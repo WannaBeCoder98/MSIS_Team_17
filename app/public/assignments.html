@@ -63,9 +63,9 @@
                               <td>{{ assign.rid}}</td>
                               <td>
                                 <button type="button" class="btn btn-outline-secondary btn-sm"
-                                  v-on:click="selectOffer(offer)">Edit</button>
+                                  v-on:click="selectAssignment(assign)">Edit</button>
                                 <button type="button" class="btn btn-outline-secondary btn-sm"
-                                  v-on:click="postDeleteOffer(offer)">Delete</button>
+                                  v-on:click="postDeleteAssignment(assign)">Delete</button>
                               </td>
                           </tr>
                       </tbody>
@@ -73,8 +73,8 @@
                 </div>
         
               </div>
-              <h2>Add an Assignment!</h2>
-              <form v-on:submit.prevent="postNewAssignment">
+              <h2>Add or Edit an Assignment!</h2>
+              <form v-on:submit.prevent="postAssignment">
                 <div class="mb-3">
                   <label for="position" class="form-label">Position</label>
                   <input list="postionList" v-model="infoFormAssignments.position" class="form-control" id="position">
@@ -96,14 +96,11 @@
                   </datalist>
                 </div>
                 <div class="mb-3">
-                  <!-- <label for="gid" class="form-label">GID</label> -->
-                  
                   <label for="rid" class="form-label">Referee<span class="reqd"></span></label>
                     <select class="form-select" aria-label="Default select example" v-model="infoFormAssignments.rid"  id="rid" @change='fetchRefData'>
-                        <option v-for="ref in referees" :value= 'ref.rid' >{{ ref.name }}</option>
+                        <option v-for="ref in referees" :value= 'ref.rid' >{{ ref.rid }}</option>
                     </select>
                   
-                  <!--<input type="text" v-model="infoFormAssignments.gid" class="form-control" id="gid">-->
                 </div>
                 <div class="mb-3">
                   <label for="gid" class="form-label">Game<span class="reqd"></span></label>
