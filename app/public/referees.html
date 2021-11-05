@@ -44,7 +44,7 @@
             <div id="refApp" class="container">
               <div class="row align-items-start">
                 <div class="col col-4">
-                  <table class="table">
+                  <table id = "refTable" class="table">
                     <thead>
                       <tr>
                         <th>#</th>
@@ -70,6 +70,8 @@
                           </tr>
                       </tbody>
                   </table>
+                  <button type="button" class="btn btn-outline-secondary btn-sm"
+                                  v-on:click="exportTableToCSV(refTable)">Download Table</button>
                 </div>
         
               </div>
@@ -117,5 +119,6 @@
 
       <!-- Script -->
     <script src="js/index.js"></script>
+    <script src="js/reports.js"></script>
   </body>
 </html>
