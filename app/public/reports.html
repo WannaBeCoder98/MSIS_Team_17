@@ -8,7 +8,6 @@
     <title>ISRA</title>
     <link rel="stylesheet" href="css/main.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link href="css/styles.css" rel="stylesheet" type="text/css">
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
   </head>
@@ -71,8 +70,70 @@
           <p><a href="api/report/referees_index.php/?format=csv">Download as CSV</a></p>
         </div>
       </div>
+
+      <div class="col-sm-8 text-right"> 
+        <h1>All Referees</h1>
+        <div id="reportAppREF_All" class="container">
+          <p><a href="api/report/all_referees_index.php/?format=csv">Download as CSV</a></p>
+          <div class="row align-items-start">
+            <div class="col col-4">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>RID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Grade</th>
+                    <th>Rating</th>
+                  </tr>
+                </thead>
+                  <tbody>
+                      <tr v-for="ref in referees">
+                          <td>{{ ref.rid }}</td>
+                          <td>{{ ref.name }}</td>
+                          <td>{{ ref.age }}</td>
+                          <td>{{ ref.grade }}</td>
+                          <td>{{ ref.rating}}</td>
+                      </tr>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-8 text-right"> 
+        <h1>All Games</h1>
+        <div id="reportAppGame_All" class="container">
+          <p><a href="api/report/all_games_index.php/?format=csv">Download as CSV</a></p>
+          <div class="row align-items-start">
+            <div class="col col-4">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>GID</th>
+                    <th>Location</th>
+                    <th>Time</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                  <tbody>
+                      <tr v-for="game in games">
+                          <td>{{ game.gid }}</td>
+                          <td>{{ game.location }}</td>
+                          <td>{{ game.gtime }}</td>
+                          <td>{{ game.gdate }}</td>
+                      </tr>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
       <script src="js/report_ref.js"></script>
       <script src="js/report.js"></script>
+      <script src="js/report_all_refs.js"></script>
+      <script src="js/report_all_games.js"></script>
 
 
 

@@ -44,4 +44,4 @@ INSERT INTO assignment (gid, rid, position, rstatus) VALUES
 (3, 3, 'Main', 'Unassigned');
 SELECT * FROM assignment; 
 
-SELECT name, position, rstatus from referee LEFT JOIN assignment ON referee.rid = assignment.rid AND assignment.rstatus = 'unassigned' ; 
+SELECT	 name, position, rstatus from referee LEFT JOIN assignment ON referee.rid = assignment.rid AND assignment.rstatus = 'unassigned' ; 

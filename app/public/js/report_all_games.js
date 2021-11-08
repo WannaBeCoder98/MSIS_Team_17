@@ -1,8 +1,8 @@
 
-const assignApp = {
+const gameApp = {
     data() {
       return {
-        assignments: []
+        games: []
       }
     },
     methods: {
@@ -11,11 +11,11 @@ const assignApp = {
             return "$ " + d;
         },
         fetchOfferData() {
-            fetch('/api/report/referees_index.php')
+            fetch('/api/report/all_games_index.php')
             .then( response => response.json() )
             .then( (responseJson) => {
                 console.log(responseJson);
-                this.assignments = responseJson;
+                this.games = responseJson;
             })
             .catch( (err) => {
                 console.error(err);
@@ -27,5 +27,5 @@ const assignApp = {
     }
   }
   
-  Vue.createApp(assignApp).mount('#reportAppREF');
+  Vue.createApp(gameApp).mount('#reportAppGame_All');
   
