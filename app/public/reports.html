@@ -26,10 +26,47 @@
             <div class="navbar-nav">
               <a class="nav-link" href="index.html">Home</a>
               <a class="nav-link"  href="referees.html">Referees</a>
-              <a class="nav-link active" aria-current="page" href="assignments.html">Assignments </a>
+              <a class="nav-link" href="assignments.html">Assignments </a>
               <a class="nav-link" href="games.html">Games</a>
-              <a class="nav-link" href="reports.html">Reports</a>
+              <a class="nav-link active" aria-current="page" href="reports.html">Reports</a>
             </div>
           </div>
         </div>
       </nav>
+    
+      <div class="col-sm-8 text-right"> 
+        <h1>Assignments</h1>
+        <div id="reportApp" class="container">
+          <p><a href="api/report/assignment_index.php/?format=csv">Download as CSV</a></p>
+          <div class="row align-items-start">
+            <div class="col col-4">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Position</th>
+                    <th>rstatus</th>
+                    <th>GID</th>
+                    <th>RID</th>
+                  </tr>
+                </thead>
+                  <tbody>
+                      <tr v-for="assign in assignments">
+                          <td>{{ assign.aid }}</td>
+                          <td>{{ assign.position }}</td>
+                          <td>{{ assign.rstatus }}</td>
+                          <td>{{ assign.gid }}</td>
+                          <td>{{ assign.rid}}</td>
+                      </tr>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="js/report.js"></script>
+
+
+
+  </body>
+  </html>

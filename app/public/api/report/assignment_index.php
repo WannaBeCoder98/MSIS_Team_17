@@ -17,12 +17,12 @@ $assignments = $stmt->fetchAll();
 
 if(isset($_GET['format']) && $_GET['format'] == 'csv'){
     header('Content-Type: text/csv');
-    echo "gid,location,gdate,gtime\r\n";
+    echo "aid,rid,position,rstatus\r\n";
     foreach($assignments as $a){
-        echo "\"" . $a['gid'] ."\","
-        . $a['location'] . ','
-        . $a['gdate'] . ','
-        . $a['gtime'] ."\r\n";
+        echo "\"" . $a['aid'] ."\","
+        . $a['rid'] . ','
+        . $a['position'] . ','
+        . $a['rstatus'] ."\r\n";
     }
 } else {
 // Step 3: Convert to JSON
