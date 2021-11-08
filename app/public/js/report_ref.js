@@ -1,8 +1,8 @@
 
-const SomeApp = {
+const assignApp = {
     data() {
       return {
-        assignments: []
+        referees: []
       }
     },
     methods: {
@@ -11,7 +11,7 @@ const SomeApp = {
             return "$ " + d;
         },
         fetchOfferData() {
-            fetch('/api/report/assignment_index.php')
+            fetch('/api/report/referees_index.php')
             .then( response => response.json() )
             .then( (responseJson) => {
                 console.log(responseJson);
@@ -27,5 +27,5 @@ const SomeApp = {
     }
   }
   
-  Vue.createApp(SomeApp).mount('#reportApp');
+  Vue.createApp(assignApp).mount('#reportAppREF');
   
